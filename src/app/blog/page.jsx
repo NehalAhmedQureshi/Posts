@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Button,
+  Chip,
   Divider,
   Grid2,
   IconButton,
@@ -39,6 +40,11 @@ export default async function Page() {
                     <Typography variant="h6" className="title">
                       {post.title}
                     </Typography>
+                    <Stack direction={"row"} gap={1}>
+                      {post.tags.map((tag , index)=>(
+                        <Chip label={`${tag.charAt(0).toUpperCase() + tag.splice(1)}`} />
+                      ))}
+                    </Stack>
                     <Divider />
                     <Typography variant="body1" className="body">
                       {post.body}
