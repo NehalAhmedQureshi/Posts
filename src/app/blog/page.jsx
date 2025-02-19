@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 export const revalidate = 3600; // ISR (Incremental Static Regeneration)
 
-export default async function Page() {
+export default async function Blog() {
   try {
     const response = await fetch("https://dummyjson.com/posts", {
       cache: "no-store",
