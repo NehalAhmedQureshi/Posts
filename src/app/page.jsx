@@ -5,7 +5,7 @@ import Blog from "./blog/page";
 export default async function Home() {
   return (
     <div className="main">
-      <Blog/>
+    <Blog />
     </div>
   );
 }

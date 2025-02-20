@@ -41,8 +41,12 @@ export default async function Blog() {
                       {post.title}
                     </Typography>
                     <Stack direction={"row"} gap={1}>
-                      {post.tags.map((tag , index)=>(
-                        <Chip label={`${tag.charAt(0).toUpperCase() + tag.splice(1)}`} />
+                      {post.tags.map((tag, index) => (
+                        <Chip
+                          label={`${
+                            tag.charAt(0).toUpperCase() + tag.slice(1)
+                          }`}
+                        />
                       ))}
                     </Stack>
                     <Divider />
@@ -58,7 +62,13 @@ export default async function Blog() {
       </div>
     );
   } catch (error) {
-    console.error("Error fetching data:", error);
-    return <div className="main">No data Found!</div>;
+    console.error("Error fetching data:", error.message);
+    return (
+      <Stack>
+        <Typography variant="h4">Posts</Typography>
+        <Divider />
+        <Typography textAlign={'center'} variant="h5" color="rgba(0,0,0,0.4)" pt={5}>No Posts Found!</Typography>
+      </Stack>
+    );
   }
 }
