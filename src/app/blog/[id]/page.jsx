@@ -40,16 +40,20 @@ export async function generateStaticParams() {
 
 export default async function page({ params }) {
   const { id } = await params;
-  const response = await fetch(`https://dummyjson.com/posts/${id}`,{next:{tags:['post']}})
-  if(!(response?.ok)){
-     return(
-          <Stack>
-               <Typography>Data not Found!</Typography>
-          </Stack>
-     )
+  const response = await fetch(`https://dummyjson.com/posts/${id}`, {
+    next: { tags: ["post"] },
+  });
+  if (!response?.ok) {
+    return (
+      <Stack>
+        <Typography>Data not Found!</Typography>
+      </Stack>
+    );
   }
-  let post = await response.json()
+  let post = await response.json();
   console.log("🚀 ~ page ~ post:", post)
+
+  
   return (
     <Container maxWidth={"lg"}>
       <Stack
@@ -70,10 +74,12 @@ export default async function page({ params }) {
             <Divider />
             <Stack direction={"row"} gap={1}>
               {post?.tags?.map((tag, index) => (
-                <Chip
-                  key={index}
-                  label={`${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
-                />
+                <Link href={`/blog/tag/${tag}`} key={index}>
+                  <Chip
+                    key={index}
+                    label={`${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
+                  />
+                </Link>
               ))}
             </Stack>
             <Typography variant={"body1"}>{post.body || "--"}</Typography>

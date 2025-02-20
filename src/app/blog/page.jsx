@@ -25,6 +25,7 @@ export default async function Blog() {
     let handleLike = () => {
       console.log("like");
     };
+    
     return (
       <div className="main">
         <h1>Hello Blog</h1>
