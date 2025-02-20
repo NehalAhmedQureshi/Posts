@@ -26,7 +26,7 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   try {
-    const response = await fetch("https://dummyjson.com/posts");
+    const response = await fetch("https://dummyjson.com/posts?limit=40");
     if (!response.ok) {
       throw new Error(`Failed to fetch, status: ${response.status}`);
     }

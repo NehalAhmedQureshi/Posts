@@ -14,9 +14,9 @@ export const revalidate = 3600; // ISR (Incremental Static Regeneration)
 
 export default async function Blog() {
   try {
-    const response = await fetch("https://dummyjson.com/posts", {
+    const response = await fetch("https://dummyjson.com/posts?limit=40", {
       cache: "no-store",
-      next: { tags: ["posts"] },
+      next: { tags: ["posts"] }, 
     });
     console.log("🚀 ~ Page ~ response:", response);
     let { posts } = await response.json();
@@ -44,6 +44,7 @@ export default async function Blog() {
                     <Stack direction={"row"} gap={1}>
                       {post.tags.map((tag, index) => (
                         <Chip
+                        key={index}
                           label={`${
                             tag.charAt(0).toUpperCase() + tag.slice(1)
                           }`}
