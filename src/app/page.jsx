@@ -1,6 +1,5 @@
-import Image from "next/image";
-import Blog from "./blog/page";
 // import styles from "./page.module.css";
+import Blog from "./(screens)/blog/page";
 
 export default async function Home() {
   return (

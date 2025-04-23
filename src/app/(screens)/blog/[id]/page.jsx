@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import {
   East,
+  Edit,
   ForkLeft,
   ThumbDown,
   ThumbDownOffAlt,
@@ -51,9 +52,7 @@ export default async function page({ params }) {
     );
   }
   let post = await response.json();
-  console.log("🚀 ~ page ~ post:", post)
 
-  
   return (
     <Container maxWidth={"lg"}>
       <Stack
@@ -70,7 +69,14 @@ export default async function page({ params }) {
         </Link>
         <Paper sx={{ padding: "20px", width: "80%" }}>
           <Stack gap={2}>
-            <Typography variant="h4">{post.title || "--"}</Typography>
+            <Stack direction={"row"} justifyContent={"space-between"}>
+              <Typography variant="h4">{post.title || "--"}</Typography>
+              <Link href={"/blog"}>
+                <IconButton>
+                  <Edit />
+                </IconButton>
+              </Link>
+            </Stack>
             <Divider />
             <Stack direction={"row"} gap={1}>
               {post?.tags?.map((tag, index) => (
